@@ -72,7 +72,7 @@ Las clases conceptuales son objetos o entidades del dominio, como personas, máq
    ## **4. Diseño de Pelicat**
 El objetivo de la fase de diseño es cubrir los detalles y crear un diseño que pueda convertirse en la implementación final en código. Esto significa que no solo consideramos qué hará el programa y cuál será su organización principal, sino que también especificamos los detalles de programación, las bibliotecas que utilizaremos y todos lo necesario para obtener una implementación funcional.
 
-![](uml.png)
+![](uml2.png)
 
 Creamos el paquete pelicat que contendrá todo el código de la aplicación.
 
