@@ -1,14 +1,21 @@
 class Pelicula:
-    def __init__(self, nombre):
-        self._nombre = nombre
 
-    def __str__(self):
-        return f'Pelicula: {self._nombre}'
+    clasificaciones = {
+        1: 'ATP',
+        2: 'PG',
+        3: 'PG-13',
+        4: 'NC16',
+        5: 'M-18'
+    }
+    categorias = {
+        1: 'Acción',
+        2: 'Aventura',
+        3: 'Catástrofe',
+        4: 'Ciencia Ficción',
+        5: 'Comedia',
+        6: 'Documentales',
+        7: 'Drama',
+        8: 'Fantasía'
+    }
 
-    @property
-    def nombre(self):
-        return self._nombre
 
-    @nombre.setter
-    def nombre(self, nombre):
-        self._nombre = nombre
