@@ -70,3 +70,36 @@ class PeliculaDAO:
         except Exception as e:
             print("Ocurrio un error al obtener las películas:", e)
 
+    def eliminar_pelicula(self, pelicula_id):
+        try:
+            with self.conexion:
+                with self.conexion.cursor() as cursor:
+                    query = "DELETE FROM peliculas WHERE pelicula_id = %s"
+                    cursor.execute(query, (pelicula_id,))
+            print("Película eliminada correctamente")
+        except Exception as e:
+            print("Ocurrio un error al eliminar la película:", e)
+
+    def modificar_pelicula(self, pelicula):
+        try:
+            with self.conexion:
+                with self.conexion.cursor() as cursor:
+                    query = """
+                        UPDATE peliculas
+                        SET titulo = %s, director = %s, anio = %s, medio = %s, comentario = %s, clasificacion_id = %s, categoria_id = %s
+                        WHERE pelicula_id = %s
+                    """
+                    cursor.execute(query, (
+                        pelicula.titulo,
+                        pelicula.director,
+                        pelicula.anio,
+                        pelicula.medio,
+                        pelicula.comentario,
+                        pelicula.clasificacion_id,
+                        pelicula.categoria_id,
+                        pelicula.pelicula_id
+                    ))
+            print("Película modificada correctamente")
+        except Exception as e:
+            print(f'Ocurrio un error al modificar la película: {e}')
+
