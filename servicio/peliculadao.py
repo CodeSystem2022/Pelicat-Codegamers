@@ -55,7 +55,7 @@ class PeliculaDAO:
                     ))
             print('Película insertada correctamente')
         except Exception as e:
-            print(f'Ocurrio un error al insertar la película: {e}')
+            print(f'PeliculaDAO: Ocurrio un error al insertar la película: {e}')
 
     def ver_peliculas(self):
         try:
@@ -63,12 +63,13 @@ class PeliculaDAO:
                 with self.conexion.cursor() as cursor:
                     query = "SELECT * FROM peliculas"
                     cursor.execute(query)
-                    peliculas = cursor.fetchall()
+                    filas = cursor.fetchall()
             print("Peliculas:")
-            for pelicula in peliculas:
+            for fila in filas:
+                pelicula = Pelicula(fila[0], fila[1], fila[2], fila[3], fila[4], fila[5], fila[6], fila[7])
                 print(pelicula)
         except Exception as e:
-            print("Ocurrio un error al obtener las películas:", e)
+            print("PeliculaDAO: Ocurrio un error al obtener las películas:", e)
 
     def eliminar_pelicula(self, pelicula_id):
         try:
@@ -78,7 +79,7 @@ class PeliculaDAO:
                     cursor.execute(query, (pelicula_id,))
             print("Película eliminada correctamente")
         except Exception as e:
-            print("Ocurrio un error al eliminar la película:", e)
+            print("PeliculaDAO: Ocurrio un error al eliminar la película:", e)
 
     def modificar_pelicula(self, pelicula):
         try:
@@ -101,5 +102,5 @@ class PeliculaDAO:
                     ))
             print("Película modificada correctamente")
         except Exception as e:
-            print(f'Ocurrio un error al modificar la película: {e}')
+            print(f'PeliculaDAO: Ocurrio un error al modificar la película: {e}')
 
