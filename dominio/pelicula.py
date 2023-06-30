@@ -1,3 +1,5 @@
+from sty import fg, bg, ef, rs
+
 class Pelicula:
 
     clasificaciones = {
@@ -17,20 +19,18 @@ class Pelicula:
         7: 'Drama',
         8: 'Fantasía'
     }
-@classmethod
-    # Lógica para obtener el valor textual de la clasificacion basado en su ID numerico
-    # Supongamos que tenemos un diccionario de mapeo entre los ID numericos y los valores textuales
+    @classmethod
+    # Metodo para obtener el valor textual de la clasificacion basado en su ID numerico
     def clasificacion(cls, clasificacion_id):
         return cls.clasificaciones.get(clasificacion_id, 'Desconocido')
 
     @classmethod
-    # Lógica para obtener el valor textual de la clasificacion basado en su ID numerico
-    # Supongamos que tenemos un diccionario de mapeo entre los ID numericos y los valores textuales
+    # Metodo para obtener el valor textual de la clasificacion basado en su ID numerico
     def categoria(cls, categoria_id):
         return cls.categorias.get(categoria_id, 'Desconocido')
 
 
-    def _init_(self, pelicula_id, titulo, director, anio, medio, comentario, clasificacion_id, categoria_id):
+    def __init__(self, pelicula_id, titulo, director, anio, medio, comentario, clasificacion_id, categoria_id):
         self._pelicula_id = pelicula_id
         self._titulo = titulo
         self._director = director
@@ -39,8 +39,6 @@ class Pelicula:
         self._comentario = comentario
         self._clasificacion_id = clasificacion_id
         self._categoria_id = categoria_id
-        self._pelicula_id = None
-
 
     @property
     def titulo(self):
@@ -103,14 +101,13 @@ class Pelicula:
         return self._pelicula_id
 
     @pelicula_id.setter
-    def pelicula_id(self, value):
-        self._pelicula_id = value
+    def pelicula_id(self, valor):
+        self._pelicula_id = valor
 
     def __str__(self):
-        return f'ID: {self.pelicula_id}\nTítulo: {self.titulo}\nDirector: {self.director}\nAño: {self.anio}\nMedio: {self.medio}\nComentario: {self.comentario}\nClasificación: {self.clasificaciones[self.clasificacion_id]}\nCategoría: {self.clasificaciones[self.categoria_id]}'
-
-
-
-
-
-
+        retorno = bg.red + ef.italic + f'{self.pelicula_id}: {self.titulo}\n' + rs.italic + bg.rs
+        retorno += bg.da_blue + f'{self.director} ({self._anio}) Medio: {self.medio}\n'
+        retorno += f'Comentario: {self.comentario}\n'
+        retorno += 'Clasificación: '+Pelicula.clasificaciones[self.clasificacion_id]
+        retorno += ' Categoría: '+Pelicula.categorias[self.categoria_id] +'\n'  + bg.rs
+        return retorno
