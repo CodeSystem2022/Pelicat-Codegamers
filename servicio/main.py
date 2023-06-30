@@ -22,10 +22,15 @@ def main():
             anio = input("Ingrese el año de la película: ")
             medio = input("Ingrese el medio de la película: ")
             comentario = input("Ingrese un comentario a la película: ")
-            clasificacion_id = input("Ingrese el ID de clasificación de la película: ")
-            categoria_id = input("Ingrese el ID de categoría de la película: ")
+            for i in range(1,len(Pelicula.clasificaciones)+1):
+                print(f'{i}: {Pelicula.clasificaciones[i]}')
+            clasificacion_id = input(f'Ingrese el ID de clasificación de la película:')
+            for i in range(1,len(Pelicula.categorias)+1):
+                print(f'{i}: {Pelicula.categorias[i]}')
+            categoria_id = input(f'Ingrese el ID de categoría de la película:')
 
-            pelicula = Pelicula(titulo, director, anio, medio, comentario, clasificacion_id, categoria_id)
+            pelicula = Pelicula(0, titulo, director, anio, medio, comentario, clasificacion_id, categoria_id)
+            # print(pelicula)
             pelicula_dao.insertar_pelicula(pelicula)
         elif opcion == "3":
             pelicula_id = input("Ingrese el ID de la película a modificar: ")
@@ -71,3 +76,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
