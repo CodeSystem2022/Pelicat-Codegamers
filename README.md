@@ -102,7 +102,7 @@ Veamos como estructurar las tabla de la base de datos:
 ### **5.2 Código SQL para generar las tablas**
 
 
-|<p></p><p>CREATE TABLE public.peliculas (</p><p>`    `pelicula\_id integer SERIAL PRIMARY KEY,</p><p>`    `titulo character varying NOT NULL,</p><p>`    `director character varying,</p><p>`    `anio integer,</p><p>`    `medio character varying NOT NULL,</p><p>`    `comentario character varying,</p><p>`    `clasificacion\_id integer NOT NULL,</p><p>`    `categoria\_id integer NOT NULL</p><p>);</p>|
+|<p></p><p>CREATE TABLE public.peliculas (</p><p>`    `pelicula\_id SERIAL PRIMARY KEY,</p><p>`    `titulo character varying NOT NULL,</p><p>`    `director character varying,</p><p>`    `anio integer,</p><p>`    `medio character varying NOT NULL,</p><p>`    `comentario character varying,</p><p>`    `clasificacion\_id integer NOT NULL,</p><p>`    `categoria\_id integer NOT NULL</p><p>);</p>|
 | :- |
 
 - pelicula\_id: Identificador único de la película (generado automáticamente).
